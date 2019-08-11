@@ -10,6 +10,11 @@
 <script>
 	CSS.layoutWorklet.addModule('layoutworklet.js');
 </script>
+<style type="disabled">
+	.layout {
+		display: layout(center);
+	}
+</style>
 <style>
 	* {
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -33,15 +38,11 @@
 		justify-content: stretch;
 		align-content: stretch;
 	}
-	.layout {
-		-display: layout(center);
-	}
 	main img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 	}
-
 	main > * {
 		background: #fff;
 		border-radius: 0.25em;

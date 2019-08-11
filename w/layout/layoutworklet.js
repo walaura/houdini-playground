@@ -19,18 +19,20 @@ registerLayout(
 		}
 
 		*layout(children, edges, constraints) {
+			/* width */
 			const availableInlineSize = constraints.fixedInlineSize;
+			/* height */
 			const availableBlockSize = constraints.fixedBlockSize;
-			const childConstraints = { availableInlineSize, availableBlockSize };
-
-			const childFragments = yield children.map(child => {
-				return child.layoutNextFragment(childConstraints);
-			});
+			/* tell boundaries to children */
+			const childFragments = yield children.map(child =>
+				child.layoutNextFragment({ availableInlineSize, availableBlockSize })
+			);
 
 			for (let fragment of childFragments) {
+				fragment.inlineOffset = 0;
 				fragment.blockOffset = 0;
-				fragment.inlineOffset = (availableInlineSize - fragment.inlineSize) / 2;
 			}
+
 			return {
 				childFragments,
 			};
@@ -39,12 +41,19 @@ registerLayout(
 );
 
 /*
+W/ADJUSTS
 let offset = 0;
-fragment.blockOffset =
-	(availableBlockSize - fragment.blockSize) / 2 + offset;
-fragment.inlineOffset = (availableInlineSize - fragment.inlineSize) / 2;
-offset += fragment.blockSize;
 for (let fragment of childFragments) {
-	fragment.blockOffset -= offset / 2;
+	fragment.blockOffset =
+		(availableBlockSize - fragment.blockSize) / 2 + offset;
+	fragment.inlineOffset = (availableInlineSize - fragment.inlineSize) / 2;
+	offset += fragment.blockSize;
 }
+
+
+FINALE:
+			for (let fragment of childFragments) {
+				fragment.blockOffset -= offset / 2;
+			}
+
 */
