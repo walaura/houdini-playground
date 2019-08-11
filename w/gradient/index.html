@@ -1,0 +1,40 @@
+<body>
+	<div class="grad"></div>
+</body>
+<script>
+	CSS.registerProperty({
+		name: '--from',
+		syntax: '<color>',
+		inherits: true,
+		initialValue: 'purple',
+	});
+
+	CSS.registerProperty({
+		name: '--to',
+		syntax: '<color>',
+		inherits: true,
+		initialValue: 'blue',
+	});
+
+	CSS.paintWorklet.addModule('paintworklet.rad.js');
+</script>
+<style>
+	body {
+		background: url(http://www2.pictures.zimbio.com/mp/m9q9RMIzoIDl.jpg);
+		background-size: cover;
+	}
+	.grad {
+		position: absolute;
+		margin: auto;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		height: 75vmin;
+		width: 75vmin;
+		border-radius: 100%;
+		background-color: red;
+		background: paint(bg);
+		transition: --from 1s;
+	}
+</style>
