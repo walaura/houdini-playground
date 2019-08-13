@@ -5,11 +5,11 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "parcel index.html"
+		"start": "node-static w"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"parcel": "^1.12.3"
+		"node-static": "^0.7.11"
 	}
 }

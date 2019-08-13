@@ -1,22 +1,30 @@
+<!DOCTYPE html>
 <body>
 	<div class="grad"></div>
 </body>
 <script>
 	CSS.registerProperty({
-		name: '--from',
+		name: '--bg',
 		syntax: '<color>',
 		inherits: true,
-		initialValue: 'purple',
+		initialValue: 'pink',
 	});
 
 	CSS.registerProperty({
-		name: '--to',
+		name: '--dots',
 		syntax: '<color>',
 		inherits: true,
 		initialValue: 'blue',
 	});
 
-	CSS.paintWorklet.addModule('paintworklet.rad.js');
+	CSS.registerProperty({
+		name: '--radius',
+		syntax: '<number>',
+		inherits: false,
+		initialValue: 20,
+	});
+
+	CSS.paintWorklet.addModule('./paintworklet.js');
 </script>
 <style>
 	body {
@@ -33,8 +41,8 @@
 		height: 75vmin;
 		width: 75vmin;
 		border-radius: 100%;
-		background-color: red;
+		--radius: 40;
 		background: paint(bg);
-		transition: --from 1s;
+		transition: --bg 1s, --radius 1s;
 	}
 </style>
