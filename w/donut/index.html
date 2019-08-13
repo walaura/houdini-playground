@@ -7,14 +7,14 @@
 		name: '--bg',
 		syntax: '<color>',
 		inherits: true,
-		initialValue: 'pink',
+		initialValue: 'blue',
 	});
 
 	CSS.registerProperty({
 		name: '--dots',
 		syntax: '<color>',
 		inherits: true,
-		initialValue: 'blue',
+		initialValue: 'pink',
 	});
 
 	CSS.registerProperty({
@@ -41,7 +41,6 @@
 		height: 75vmin;
 		width: 75vmin;
 		border-radius: 100%;
-		--radius: 40;
 		background: paint(bg);
 		transition: --bg 1s, --radius 1s;
 	}

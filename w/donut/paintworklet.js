@@ -14,11 +14,11 @@ registerPaint(
 			ctx.fillRect(0, 0, geom.width, geom.height);
 
 			ctx.fillStyle = dots;
-			for (let row = -1; row < 12; row++) {
-				for (let column = -1; column < 12; column++) {
+			for (let row = -1; row < 6; row++) {
+				for (let column = -1; column < 6; column++) {
 					ctx.arc(
-						(geom.width / 10) * (row + (column % 2) * 0.5),
-						(geom.height / 10) * column,
+						(geom.width / 5) * (row + (column % 2) * 0.5),
+						(geom.height / 5) * column,
 						geom.width / radius,
 						0,
 						2 * Math.PI
