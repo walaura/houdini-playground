@@ -1,14 +1,14 @@
 registerPaint(
-	'bg',
+	"bg",
 	class {
 		static get inputProperties() {
-			return ['--bg', '--dots', '--radius'];
+			return ["--bg", "--dots", "--radius"];
 		}
 		paint(ctx, geom, props) {
 			const [bg, dots, radius] = [
-				props.get('--bg').toString(),
-				props.get('--dots').toString(),
-				props.get('--radius') || 20,
+				props.get("--bg").toString(),
+				props.get("--dots").toString(),
+				props.get("--radius") || 20
 			];
 			ctx.fillStyle = bg;
 			ctx.fillRect(0, 0, geom.width, geom.height);

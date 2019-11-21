@@ -1,40 +1,34 @@
 registerLayout(
-	'center',
+	"center",
 	class {
 		*intrinsicSizes(children) {
 			const childrenSizes = yield children.map(child => {
 				return child.intrinsicSizes();
 			});
 
-			const maxContentSize = childrenSizes.reduce(
-				(max, childSizes) => Math.max(max, childSizes.maxContentSize),
-				0
-			);
-			const minContentSize = childrenSizes.reduce(
-				(max, childSizes) => Math.max(max, childSizes.minContentSize),
-				0
-			);
+			const maxContentSize = childrenSizes.reduce((max, childSizes) => Math.max(max, childSizes.maxContentSize), 0);
+			const minContentSize = childrenSizes.reduce((max, childSizes) => Math.max(max, childSizes.minContentSize), 0);
 
 			return { maxContentSize, minContentSize };
 		}
 
-		*layout(children, edges, constraints) {
+		async layout(children, edges, constraints) {
 			/* width */
 			const availableInlineSize = constraints.fixedInlineSize;
 			/* height */
 			const availableBlockSize = constraints.fixedBlockSize;
 			/* tell boundaries to children */
-			const childFragments = yield children.map(child =>
-				child.layoutNextFragment({ availableInlineSize, availableBlockSize })
-			);
-
+			let childFragments = [];
+			for (let child of children) {
+				childFragments.push(await child.layoutNextFragment({ availableInlineSize, availableBlockSize }));
+			}
 			for (let fragment of childFragments) {
 				fragment.inlineOffset = 0;
 				fragment.blockOffset = 0;
 			}
 
 			return {
-				childFragments,
+				childFragments
 			};
 		}
 	}
