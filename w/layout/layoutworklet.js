@@ -17,11 +17,14 @@ registerLayout(
 			const availableInlineSize = constraints.fixedInlineSize;
 			/* height */
 			const availableBlockSize = constraints.fixedBlockSize;
-			/* tell boundaries to children */
+
+			/* get children */
 			let childFragments = [];
 			for (let child of children) {
 				childFragments.push(await child.layoutNextFragment({ availableInlineSize, availableBlockSize }));
 			}
+
+			/* lets do some layout!! */
 			for (let fragment of childFragments) {
 				fragment.inlineOffset = 0;
 				fragment.blockOffset = 0;
