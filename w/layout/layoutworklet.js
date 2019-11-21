@@ -26,7 +26,7 @@ registerLayout(
 );
 
 /*
-VERICAL ONLY
+VERTICAL ONLY
 for (let fragment of childFragments) {
 	fragment.inlineOffset = (availableInlineSize - fragment.inlineSize) / 2;
 }
@@ -44,5 +44,6 @@ FINALE:
 for (let fragment of childFragments) {
 	fragment.blockOffset -= offset / 4;
 }
+
 
 */
