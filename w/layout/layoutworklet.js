@@ -25,9 +25,11 @@ registerLayout(
 			}
 
 			/* lets do some layout!! */
+			let offset = 0;
 			for (let fragment of childFragments) {
-				fragment.inlineOffset = 0;
-				fragment.blockOffset = 0;
+				fragment.blockOffset = (availableBlockSize - fragment.blockSize) / 2 + offset;
+				fragment.inlineOffset = (availableInlineSize - fragment.inlineSize) / 2;
+				offset += fragment.blockSize;
 			}
 
 			return {
@@ -38,19 +40,23 @@ registerLayout(
 );
 
 /*
+VERICAL ONLY
+for (let fragment of childFragments) {
+	fragment.inlineOffset = (availableInlineSize - fragment.inlineSize) / 2;
+}
+
 W/ADJUSTS
 let offset = 0;
 for (let fragment of childFragments) {
-	fragment.blockOffset =
-		(availableBlockSize - fragment.blockSize) / 2 + offset;
+	fragment.blockOffset = (availableBlockSize - fragment.blockSize) / 2 + offset;
 	fragment.inlineOffset = (availableInlineSize - fragment.inlineSize) / 2;
 	offset += fragment.blockSize;
 }
 
 
 FINALE:
-			for (let fragment of childFragments) {
-				fragment.blockOffset -= offset / 2;
-			}
+for (let fragment of childFragments) {
+	fragment.blockOffset -= offset / 4;
+}
 
 */
