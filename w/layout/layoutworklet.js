@@ -1,28 +1,33 @@
 registerLayout(
-	"center",
-	class {
-		async layout(children, edges, constraints) {
-			/* width */
-			const availableInlineSize = constraints.fixedInlineSize;
-			/* height */
-			const availableBlockSize = constraints.fixedBlockSize;
+  "center",
+  class {
+    async layout(children, edges, constraints) {
+      /* width */
+      const availableInlineSize = constraints.fixedInlineSize;
+      /* height */
+      const availableBlockSize = constraints.fixedBlockSize;
 
-			/* get children */
-			let childFragments = [];
-			for (let child of children) {
-				childFragments.push(await child.layoutNextFragment({ availableInlineSize, availableBlockSize }));
-			}
+      /* get children */
+      let childFragments = [];
+      for (let child of children) {
+        childFragments.push(
+          await child.layoutNextFragment({
+            availableInlineSize,
+            availableBlockSize
+          })
+        );
+      }
 
-			/* lets do some layout!! */
-			/* here lol */
+      /* lets do some layout!! */
+      /* here lol */
 
-			return {
-				childFragments
-			};
-		}
+      return {
+        childFragments
+      };
+    }
 
-		async intrinsicSizes() {}
-	}
+    async intrinsicSizes() {}
+  }
 );
 
 /*
