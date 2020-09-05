@@ -3,21 +3,21 @@
 <body>
   <main>
     <div class="layout">
-      <h2>Zombieland 2</h2>
-      <small>2019</small>
-      <small>⭐️⭐️⭐️⭐️⚫️</small>
+      <div><x-icon>👈</x-icon> Back</div>
+      <h2>Page title on the middle</h2>
+      <div><x-icon>💚</x-icon></div>
     </div>
-    <img src="poster.jpg" />
+    <div class="layout">
+      <div>
+        <x-icon>😍</x-icon>
+        <h2>Logo</h2>
+      </div>
+      <div><input type="search" style="width: 100%; max-width: 600px" /></div>
+      <div><x-icon>🔔</x-icon><x-icon>💁‍♀️</x-icon></div>
+    </div>
   </main>
 </body>
 <script>
-  CSS.registerProperty({
-    name: "--gap",
-    syntax: "<number>",
-    inherits: false,
-    initialValue: 0
-  });
-
   CSS.layoutWorklet.addModule("layoutworklet.js");
 </script>
 <style>
@@ -25,8 +25,10 @@
     display: layout(center);
     --gap: 0;
   }
-</style>
-<style>
+  .layout > * {
+    box-shadow: 0 0 0 1px red;
+    padding: 0.5em;
+  }
   * {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -35,8 +37,8 @@
     background: #eee;
   }
   main {
-    height: 30em;
-    width: 20em;
+    height: 10em;
+    width: 60%;
     top: 0;
     left: 0;
     bottom: 0;
@@ -55,8 +57,18 @@
     height: 100%;
     object-fit: cover;
   }
+  x-icon {
+    display: inline-flex;
+    width: 3em;
+    height: 2em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: scale(1.33);
+  }
   h2 {
-    font-size: 1.5em;
+    font-size: 1.2em;
+    display: inline;
   }
   main > * {
     background: #fff;
